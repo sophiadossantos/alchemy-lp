@@ -6,7 +6,9 @@ import { Estrela } from './Estrela';
 type Plano = {
   nome: string;
   paraQuem: string;
-  entrega: string;
+  /** O que a pessoa recebe, em linguagem de cliente. */
+  itens: string[];
+  /** Prazo e ajustes, numa linha discreta. */
   prazo: string;
   /** Preço cheio do documento de planos. */
   preco: string;
@@ -15,43 +17,69 @@ type Plano = {
   destaque?: boolean;
 };
 
-/** Planos do documento de planos e propostas (seção 1.1). */
+/** Planos do documento de planos e propostas (seções 1.1 e 1.2), escritos sem termos técnicos. */
 const planos: Plano[] = [
   {
     nome: 'Portfólio Express',
-    paraQuem: 'Para fotógrafos e criativos com portfólio',
-    entrega: 'Página de portfólio publicada, com formulário',
-    prazo: '7 dias úteis · 1 rodada de ajustes',
+    paraQuem: 'Para fotógrafos e criativos que querem mostrar o trabalho',
+    itens: [
+      'Página com sua apresentação, galeria, depoimentos e contato',
+      'Galeria com até 30 fotos e 1 vídeo de destaque',
+      'Sua marca aplicada: logo, cores e fontes',
+      'Pedidos de orçamento chegando no seu e-mail',
+      'Botões para o seu WhatsApp e Instagram',
+      'Você mesmo troca as fotos quando quiser',
+    ],
+    prazo: 'Pronta em 7 dias úteis · 1 rodada de ajustes',
     preco: '850',
     lancamento: '600',
   },
   {
     nome: 'Essencial',
-    paraQuem: 'Para quem já tem desenvolvedor ou plataforma',
-    entrega: 'Design da landing page no Figma, celular e computador',
-    prazo: '10 dias úteis · 2 rodadas de ajustes',
+    paraQuem: 'Para quem já tem alguém para colocar o site no ar',
+    itens: [
+      'O visual completo da sua página, pronto para construir',
+      'Até 8 seções pensadas para levar o cliente ao contato',
+      'Sua marca aplicada: logo, cores e fontes',
+      'Versões para celular e computador',
+      'Tudo organizado para quem for montar o site',
+    ],
+    prazo: 'Pronta em 10 dias úteis · 2 rodadas de ajustes',
     preco: '1.100',
     lancamento: '800',
   },
   {
     nome: 'Completo',
-    paraQuem: 'Para negócios que vão anunciar',
-    entrega: 'Landing page desenhada e publicada, com formulário e WhatsApp',
-    prazo: '15 a 20 dias úteis · 2 rodadas de ajustes',
+    paraQuem: 'Para negócios que querem vender mais pela internet',
+    itens: [
+      'Sua página criada do zero e no ar, com o seu endereço',
+      'Pedidos chegando no seu e-mail e no WhatsApp',
+      'Abre rápido e funciona bem no celular',
+      'Pronta para receber visitas de anúncios',
+      'Um guia para você mesmo atualizar os textos',
+      'Acompanhamento do começo ao fim',
+    ],
+    prazo: 'Pronta em 15 a 20 dias úteis · 2 rodadas de ajustes',
     preco: '2.500',
     lancamento: '1.500',
     destaque: true,
   },
   {
     nome: 'Completo+',
-    paraQuem: 'Para quem quer página e textos prontos',
-    entrega: 'Tudo do Completo, com textos escritos do zero',
-    prazo: '20 a 25 dias úteis · 3 rodadas de ajustes',
+    paraQuem: 'Para quem não quer se preocupar nem com os textos',
+    itens: [
+      'Tudo o que vem no Completo',
+      'Textos escritos por nós, pensados para vender',
+      'Respostas para as dúvidas que travam os seus clientes',
+      'Perguntas no contato que filtram quem quer mesmo contratar',
+      'Uma conversa a mais para aprovar os textos com você',
+    ],
+    prazo: 'Pronta em 20 a 25 dias úteis · 3 rodadas de ajustes',
     preco: '3.200',
   },
 ];
 
-function CardPlano({ nome, paraQuem, entrega, prazo, preco, lancamento, destaque }: Plano) {
+function CardPlano({ nome, paraQuem, itens, prazo, preco, lancamento, destaque }: Plano) {
   const claro = destaque;
   const suave = claro ? 'text-neutro-500' : 'text-neutro-300';
   const estrela = claro ? 'text-vinho-800' : 'text-vinho-200';
@@ -95,7 +123,7 @@ function CardPlano({ nome, paraQuem, entrega, prazo, preco, lancamento, destaque
       </div>
 
       <ul className={`mt-6 flex flex-1 flex-col gap-3 text-sm ${claro ? 'text-neutro-700' : 'text-neutro-100'}`}>
-        {[entrega, prazo].map((item) => (
+        {itens.map((item) => (
           <li key={item} className="flex items-start gap-2.5">
             <Estrela tamanho={12} className={`mt-1 shrink-0 ${estrela}`} />
             {item}
@@ -103,10 +131,14 @@ function CardPlano({ nome, paraQuem, entrega, prazo, preco, lancamento, destaque
         ))}
       </ul>
 
+      <p className={`mt-6 border-t pt-4 text-xs ${claro ? 'border-neutro-900/[0.08] text-neutro-500' : 'border-white/10 text-neutro-300'}`}>
+        {prazo}
+      </p>
+
       <Button
         variante={claro ? 'vinho' : 'contorno-claro'}
         href={whatsappCom(`Olá! Vim pelo site da Alchemy e quero saber mais sobre o plano ${nome}.`)}
-        className="mt-7 w-full"
+        className="mt-5 w-full"
       >
         Saiba mais
       </Button>
