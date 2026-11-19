@@ -1,5 +1,6 @@
 import { useCallback, useRef, type CSSProperties } from 'react';
 import booking from '../assets/projeto-booking.webp';
+import claraMendes from '../assets/projeto-clara-mendes.jpg';
 import cursiva from '../assets/projeto-cursiva.png';
 import { WHATSAPP_URL } from '../config';
 import { useReducedMotion, useScrollProgress } from '../lib/hooks';
@@ -13,7 +14,11 @@ type Projeto = { altura: number; imagem?: string; nome?: string; tipo?: string }
  * Cada linha é repetida para preencher a largura enquanto desliza para o lado.
  */
 const LINHAS: Projeto[][] = [
-  [{ altura: 187 }, { altura: 217, imagem: cursiva, nome: 'Cursiva', tipo: 'Landing page' }, { altura: 187 }],
+  [
+    { altura: 187, imagem: claraMendes, nome: 'Clara Mendes', tipo: 'Conceito de landing page' },
+    { altura: 217, imagem: cursiva, nome: 'Cursiva', tipo: 'Landing page' },
+    { altura: 187 },
+  ],
   [{ altura: 144 }, { altura: 179, imagem: booking, nome: 'Booking', tipo: 'Estudo de redesign' }, { altura: 144 }],
 ];
 const REPETICOES = 3;
