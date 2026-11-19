@@ -1,26 +1,122 @@
 import type { CSSProperties } from 'react';
-import { WHATSAPP_URL } from '../config';
+import { whatsappCom } from '../config';
 import { Button } from './Button';
 import { Estrela } from './Estrela';
 
-/** Plano Portfólio Express, o de entrada (documento de planos e propostas, seção 1.2). */
-const inclusos = [
-  'Página única com apresentação, sobre, galeria, depoimentos e contato',
-  'Sua identidade visual aplicada: logo, cores e tipografia',
-  'Galeria com até 30 fotos e 1 vídeo de destaque',
-  'Formulário no fim da página, com aviso por e-mail',
-  'Botões de WhatsApp e Instagram',
-  'Versões para celular, tablet e computador',
-  'Publicação no Framer, com acesso para você trocar as fotos',
-  '1 rodada de ajustes',
+type Plano = {
+  nome: string;
+  paraQuem: string;
+  entrega: string;
+  prazo: string;
+  /** Preço cheio do documento de planos. */
+  preco: string;
+  /** Valor de lançamento (3 primeiros projetos), quando existe. */
+  lancamento?: string;
+  destaque?: boolean;
+};
+
+/** Planos do documento de planos e propostas (seção 1.1). */
+const planos: Plano[] = [
+  {
+    nome: 'Portfólio Express',
+    paraQuem: 'Para fotógrafos e criativos com portfólio',
+    entrega: 'Página de portfólio publicada, com formulário',
+    prazo: '7 dias úteis · 1 rodada de ajustes',
+    preco: '850',
+    lancamento: '600',
+  },
+  {
+    nome: 'Essencial',
+    paraQuem: 'Para quem já tem desenvolvedor ou plataforma',
+    entrega: 'Design da landing page no Figma, celular e computador',
+    prazo: '10 dias úteis · 2 rodadas de ajustes',
+    preco: '1.100',
+    lancamento: '800',
+  },
+  {
+    nome: 'Completo',
+    paraQuem: 'Para negócios que vão anunciar',
+    entrega: 'Landing page desenhada e publicada, com formulário e WhatsApp',
+    prazo: '15 a 20 dias úteis · 2 rodadas de ajustes',
+    preco: '2.500',
+    lancamento: '1.500',
+    destaque: true,
+  },
+  {
+    nome: 'Completo+',
+    paraQuem: 'Para quem quer página e textos prontos',
+    entrega: 'Tudo do Completo, com textos escritos do zero',
+    prazo: '20 a 25 dias úteis · 3 rodadas de ajustes',
+    preco: '3.200',
+  },
 ];
 
-/** Condições do documento de planos: pagamento e prazo do Portfólio Express. */
-const detalhes = ['50% para começar e 50% na entrega, via Pix', 'Pronta em 7 dias úteis'];
+function CardPlano({ nome, paraQuem, entrega, prazo, preco, lancamento, destaque }: Plano) {
+  const claro = destaque;
+  const suave = claro ? 'text-neutro-500' : 'text-neutro-300';
+  const estrela = claro ? 'text-vinho-800' : 'text-vinho-200';
+  return (
+    <li
+      data-reveal
+      className={`luz relative flex flex-col rounded-3xl p-6 md:p-7 ${
+        claro
+          ? 'bg-white text-neutro-900 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.65)]'
+          : 'border border-white/10 bg-white/[0.04] text-neutro-50'
+      }`}
+      style={
+        {
+          '--cor-luz': claro ? 'rgba(122, 31, 46, 0.03)' : 'rgba(241, 201, 202, 0.05)',
+          '--raio-luz': '240px',
+        } as CSSProperties
+      }
+    >
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="text-lg font-semibold">{nome}</h3>
+        {claro && (
+          <span className="rounded-full bg-vinho-800 px-3 py-1 text-xs font-medium text-neutro-50">Recomendado</span>
+        )}
+      </div>
+      <p className={`mt-1 text-sm ${suave}`}>{paraQuem}</p>
+
+      <div className={`mt-6 border-t pt-6 ${claro ? 'border-neutro-900/[0.08]' : 'border-white/10'}`}>
+        <p className={`text-sm ${suave}`}>
+          A partir de
+          {lancamento && (
+            <>
+              <span className="sr-only">, de</span> <s className="ml-1">R$ {preco}</s>
+            </>
+          )}
+        </p>
+        <p className={`mt-1 flex items-start gap-1 ${claro ? 'text-vinho-800' : 'text-neutro-50'}`}>
+          <span className="sr-only">por </span>
+          <span className="mt-1.5 text-base font-semibold">R$</span>
+          <span className="text-4xl font-semibold leading-none tracking-[-0.03em]">{lancamento ?? preco}</span>
+        </p>
+      </div>
+
+      <ul className={`mt-6 flex flex-1 flex-col gap-3 text-sm ${claro ? 'text-neutro-700' : 'text-neutro-100'}`}>
+        {[entrega, prazo].map((item) => (
+          <li key={item} className="flex items-start gap-2.5">
+            <Estrela tamanho={12} className={`mt-1 shrink-0 ${estrela}`} />
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <Button
+        variante={claro ? 'vinho' : 'contorno-claro'}
+        href={whatsappCom(`Olá! Vim pelo site da Alchemy e quero saber mais sobre o plano ${nome}.`)}
+        className="mt-7 w-full"
+      >
+        Saiba mais
+      </Button>
+    </li>
+  );
+}
 
 /**
- * Investimento em destaque: painel preto frio com o título e o que está incluso à esquerda,
- * e o card de preço claro à direita, contrastando com o fundo escuro.
+ * Investimento: painel preto frio com os quatro planos lado a lado, cada um com "a partir de"
+ * e um "Saiba mais" que abre o WhatsApp já com o nome do plano. O detalhe fica para a conversa.
  */
 export function Investimento() {
   return (
@@ -41,76 +137,32 @@ export function Investimento() {
           />
         </div>
 
-        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,440px)] lg:gap-20">
-          {/* Título + incluso */}
-          <div className="flex flex-col">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-[560px]">
             <h2
               id="investimento-titulo"
               className="text-2xl font-semibold leading-tight tracking-[-0.02em] md:text-4xl md:leading-[1.1]"
             >
               Investimento
             </h2>
-            <p className="mt-2 text-neutro-300">Um valor fechado, sem surpresas no meio do caminho.</p>
-
-            <h3 className="mt-8 text-base font-semibold md:mt-10 md:text-lg">Incluso</h3>
-            <ul className="mt-2">
-              {inclusos.map((item) => (
-                <li key={item} className="flex items-center gap-3 border-b border-white/10 py-3.5 last:border-b-0">
-                  <Estrela tamanho={14} className="text-vinho-200" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-neutro-300">
-              Adicionais: formulário qualificado, domínio próprio e manutenção mensal.
-            </p>
-            <p className="mt-2 text-neutro-300">
-              Precisa de mais? Também temos os planos Essencial, Completo e Completo+.
-            </p>
+            <p className="mt-2 text-neutro-300">Valores fechados, sem surpresa. Escolha o ponto de partida do seu projeto.</p>
           </div>
-
-          {/* Card de preço claro */}
-          <div
-            className="luz relative flex flex-col rounded-[28px] bg-white p-7 text-neutro-900 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.65)] sm:p-9"
-            style={{ '--cor-luz': 'rgba(122, 31, 46, 0.03)', '--raio-luz': '280px' } as CSSProperties}
-          >
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <span className="flex flex-col">
-                <span className="text-lg font-semibold">Portfólio Express</span>
-                <span className="text-sm text-neutro-500">Plano de entrada</span>
-              </span>
-              <span className="rounded-full bg-vinho-800 px-3 py-1 text-xs font-medium text-neutro-50">
-                Valor de lançamento
-              </span>
-            </div>
-
-            <div className="mt-7 border-t border-neutro-900/[0.08] pt-7">
-              <p className="text-neutro-500">
-                <span className="sr-only">De </span>
-                <s>R$ 850</s>
-              </p>
-              <p className="mt-1 flex items-start gap-1.5 text-vinho-800">
-                <span className="sr-only">Por </span>
-                <span className="mt-2 text-xl font-semibold md:mt-3 md:text-2xl">R$</span>
-                <span className="text-5xl font-semibold leading-none tracking-[-0.04em] md:text-7xl">600</span>
-              </p>
-              <p className="mt-3 text-neutro-600">Só para os 3 primeiros projetos.</p>
-            </div>
-
-            <ul className="mt-7 flex flex-col gap-2">
-              {detalhes.map((d) => (
-                <li key={d} className="flex items-center gap-3 rounded-xl bg-neutro-50 px-4 py-3 text-neutro-700">
-                  <Estrela tamanho={12} className="text-vinho-800" />
-                  {d}
-                </li>
-              ))}
-            </ul>
-
-            <Button href={WHATSAPP_URL} className="mt-7 w-full">
-              Garantir minha vaga
-            </Button>
-          </div>
+          <p className="inline-flex items-center gap-2 self-start rounded-full border border-white/10 px-3 py-1.5 text-xs text-neutro-200 md:self-auto">
+            <Estrela tamanho={10} className="text-vinho-200" />
+            Valor de lançamento para os 3 primeiros projetos
+          </p>
         </div>
+
+        <ul className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {planos.map((p) => (
+            <CardPlano key={p.nome} {...p} />
+          ))}
+        </ul>
+
+        <p className="mt-8 text-sm text-neutro-300">
+          Pagamento: 50% para começar e 50% na entrega, via Pix. Adicionais: domínio próprio, formulário qualificado e
+          manutenção mensal.
+        </p>
       </div>
     </section>
   );
