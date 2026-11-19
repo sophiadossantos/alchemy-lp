@@ -3,16 +3,20 @@ import { WHATSAPP_URL } from '../config';
 import { Button } from './Button';
 import { Estrela } from './Estrela';
 
+/** Plano Portfólio Express, o de entrada (documento de planos e propostas, seção 1.2). */
 const inclusos = [
-  'Design sob medida, sem template',
-  'Página responsiva para qualquer tela',
-  'Formulário com aviso por e-mail e WhatsApp',
-  'Botão direto para o seu WhatsApp',
-  '1 rodada de ajustes antes de publicar',
+  'Página única com apresentação, sobre, galeria, depoimentos e contato',
+  'Sua identidade visual aplicada: logo, cores e tipografia',
+  'Galeria com até 30 fotos e 1 vídeo de destaque',
+  'Formulário no fim da página, com aviso por e-mail',
+  'Botões de WhatsApp e Instagram',
+  'Versões para celular, tablet e computador',
+  'Publicação no Framer, com acesso para você trocar as fotos',
+  '1 rodada de ajustes',
 ];
 
-/** Detalhes práticos tirados do FAQ. */
-const detalhes = ['50% para começar e 50% na entrega', 'Entrega em 2 a 3 semanas após o briefing'];
+/** Condições do documento de planos: pagamento e prazo do Portfólio Express. */
+const detalhes = ['50% para começar e 50% na entrega, via Pix', 'Pronta em 7 dias úteis'];
 
 /**
  * Investimento em destaque: painel preto frio com o título e o que está incluso à esquerda,
@@ -57,8 +61,11 @@ export function Investimento() {
                 </li>
               ))}
             </ul>
-            <p className="mt-4 text-sm text-neutro-300">
-              Adicionais: pixel e analytics, integração com CRM e páginas extras.
+            <p className="mt-4 text-neutro-300">
+              Adicionais: formulário qualificado, domínio próprio e manutenção mensal.
+            </p>
+            <p className="mt-2 text-neutro-300">
+              Precisa de mais? Também temos os planos Essencial, Completo e Completo+.
             </p>
           </div>
 
@@ -68,7 +75,10 @@ export function Investimento() {
             style={{ '--cor-luz': 'rgba(122, 31, 46, 0.03)', '--raio-luz': '280px' } as CSSProperties}
           >
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <span className="text-lg font-semibold">Landing page sob medida</span>
+              <span className="flex flex-col">
+                <span className="text-lg font-semibold">Portfólio Express</span>
+                <span className="text-sm text-neutro-500">Plano de entrada</span>
+              </span>
               <span className="rounded-full bg-vinho-800 px-3 py-1 text-xs font-medium text-neutro-50">
                 Valor de lançamento
               </span>
@@ -77,19 +87,19 @@ export function Investimento() {
             <div className="mt-7 border-t border-neutro-900/[0.08] pt-7">
               <p className="text-neutro-500">
                 <span className="sr-only">De </span>
-                <s>A partir de R$ 1.200</s>
+                <s>R$ 850</s>
               </p>
               <p className="mt-1 flex items-start gap-1.5 text-vinho-800">
                 <span className="sr-only">Por </span>
                 <span className="mt-3 text-2xl font-semibold">R$</span>
-                <span className="text-[72px] font-semibold leading-none tracking-[-0.04em]">900</span>
+                <span className="text-[72px] font-semibold leading-none tracking-[-0.04em]">600</span>
               </p>
               <p className="mt-3 text-neutro-600">Só para os 3 primeiros projetos.</p>
             </div>
 
             <ul className="mt-7 flex flex-col gap-2">
               {detalhes.map((d) => (
-                <li key={d} className="flex items-center gap-3 rounded-xl bg-neutro-50 px-4 py-3 text-sm text-neutro-700">
+                <li key={d} className="flex items-center gap-3 rounded-xl bg-neutro-50 px-4 py-3 text-neutro-700">
                   <Estrela tamanho={12} className="text-vinho-800" />
                   {d}
                 </li>

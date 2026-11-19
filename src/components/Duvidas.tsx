@@ -3,22 +3,35 @@ import iconeMais from '../assets/icone-mais.svg';
 import iconeMenos from '../assets/icone-menos.svg';
 import { SectionTitle } from './SectionTitle';
 
+/** Respostas conferidas com o documento de planos e propostas. */
 const perguntas = [
-  { pergunta: 'Quanto tempo leva?', resposta: 'De 2 a 3 semanas após o briefing.' },
+  {
+    pergunta: 'Quanto tempo leva?',
+    resposta:
+      'Depende do plano: 7 dias úteis no Portfólio Express, 10 no Essencial, de 15 a 20 no Completo e de 20 a 25 no Completo+. O prazo começa quando todos os materiais chegam e a entrada é paga.',
+  },
   {
     pergunta: 'Como funciona a rodada de ajustes?',
-    resposta: 'Todos os ajustes são enviados de uma vez, depois de ver o design, e aplicados antes da publicação.',
+    resposta:
+      'Você envia todos os ajustes de uma vez, depois de ver o design, e eles são aplicados antes da publicação. São 1 rodada no Portfólio Express, 2 no Essencial e no Completo e 3 no Completo+. Rodadas extras custam R$ 180 cada.',
   },
   {
     pergunta: 'Preciso ter domínio e hospedagem?',
-    resposta: 'Não precisa ter antes. A contratação é orientada no processo, e os custos ficam no seu nome.',
+    resposta:
+      'Não precisa ter antes. A página fica no Framer, numa conta no seu nome, com assinatura a partir de cerca de US$ 10 por mês. A configuração do domínio já vem no Completo e é um adicional de R$ 150 no Portfólio Express.',
   },
-  { pergunta: 'E se eu quiser mudar algo depois?', resposta: 'Ajustes extras ou após a entrega são orçados à parte.' },
-  { pergunta: 'Como funciona o pagamento?', resposta: '50% para começar e 50% na entrega.' },
+  {
+    pergunta: 'E se eu quiser mudar algo depois?',
+    resposta:
+      'No Framer dá para trocar fotos e textos simples por conta própria. Novas seções ou mudanças de layout são orçadas à parte, e também existe a manutenção mensal de até 2 horas por R$ 250.',
+  },
+  {
+    pergunta: 'Como funciona o pagamento?',
+    resposta: '50% para começar e 50% na entrega, antes da publicação, via Pix.',
+  },
   {
     pergunta: 'Por que o valor de lançamento?',
-    resposta:
-      'São os primeiros projetos da Alchemy. Em troca do desconto, o projeto entra no portfólio, com um depoimento seu.',
+    resposta: 'A Alchemy está começando, e os 3 primeiros projetos têm um valor especial de lançamento.',
   },
 ];
 

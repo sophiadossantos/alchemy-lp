@@ -23,7 +23,7 @@ export function Header() {
             ))}
           </ul>
         </nav>
-        <Button href={WHATSAPP_URL} className="justify-self-end px-5 py-2.5 max-sm:px-4 max-sm:py-2 max-sm:text-sm">
+        <Button href={WHATSAPP_URL} className="justify-self-end px-5 py-2.5 max-sm:px-4 max-sm:py-2">
           Quero minha página
         </Button>
       </div>

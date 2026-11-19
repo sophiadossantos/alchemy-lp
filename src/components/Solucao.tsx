@@ -41,10 +41,6 @@ export function Solucao() {
             </CardLuz>
           ))}
         </ul>
-        <p className="max-w-[575px] text-center" data-reveal>
-          Ideal para quem vende pelo Instagram, para fotógrafos e criativos que vivem de portfólio e para quem vai lançar
-          um serviço, evento ou produto.
-        </p>
       </div>
     </section>
   );

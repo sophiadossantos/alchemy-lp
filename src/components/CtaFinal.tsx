@@ -27,7 +27,7 @@ export function CtaFinal() {
             >
               Pronto para transformar a sua presença?
             </h2>
-            <p className="max-w-[520px] text-lg text-vinho-200">
+            <p className="max-w-[520px] text-vinho-200">
               Sua página à altura do seu negócio começa com uma conversa.
             </p>
             <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row">

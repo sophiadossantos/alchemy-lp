@@ -69,7 +69,7 @@ export function Hero() {
               Seu negócio merece uma página{' '}
               <span className="bg-gradient-to-r from-vinho-800 to-vinho-500 bg-clip-text text-transparent">à altura.</span>
             </h1>
-            <p style={entra(240).style} className={`max-w-[460px] text-lg text-neutro-600 ${entra(240).className}`}>
+            <p style={entra(240).style} className={`text-neutro-600 md:whitespace-nowrap ${entra(240).className}`}>
               Landing pages sob medida que transformam visitas em clientes.
             </p>
           </div>
