@@ -3,6 +3,7 @@ import booking from '../assets/projeto-booking.webp';
 import claraMendes from '../assets/projeto-clara-mendes.jpg';
 import cursiva from '../assets/projeto-cursiva.png';
 import doceAtelie from '../assets/projeto-doce-atelie.jpg';
+import rumo from '../assets/projeto-rumo.jpg';
 import studioLumi from '../assets/projeto-studio-lumi.jpg';
 import { WHATSAPP_URL } from '../config';
 import { useReducedMotion, useScrollProgress } from '../lib/hooks';
@@ -24,7 +25,7 @@ const LINHAS: Projeto[][] = [
   [
     { altura: 144, imagem: studioLumi, nome: 'Studio Lumi', tipo: 'Conceito de landing page' },
     { altura: 179, imagem: booking, nome: 'Booking', tipo: 'Estudo de redesign' },
-    { altura: 144 },
+    { altura: 144, imagem: rumo, nome: 'Rumo Mentoria', tipo: 'Conceito de landing page' },
   ],
 ];
 const REPETICOES = 3;
