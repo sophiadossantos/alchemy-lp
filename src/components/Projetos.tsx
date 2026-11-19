@@ -2,6 +2,7 @@ import { useCallback, useRef, type CSSProperties } from 'react';
 import booking from '../assets/projeto-booking.webp';
 import claraMendes from '../assets/projeto-clara-mendes.jpg';
 import cursiva from '../assets/projeto-cursiva.png';
+import studioLumi from '../assets/projeto-studio-lumi.jpg';
 import { WHATSAPP_URL } from '../config';
 import { useReducedMotion, useScrollProgress } from '../lib/hooks';
 import { Button } from './Button';
@@ -19,7 +20,11 @@ const LINHAS: Projeto[][] = [
     { altura: 217, imagem: cursiva, nome: 'Cursiva', tipo: 'Landing page' },
     { altura: 187 },
   ],
-  [{ altura: 144 }, { altura: 179, imagem: booking, nome: 'Booking', tipo: 'Estudo de redesign' }, { altura: 144 }],
+  [
+    { altura: 144, imagem: studioLumi, nome: 'Studio Lumi', tipo: 'Conceito de landing page' },
+    { altura: 179, imagem: booking, nome: 'Booking', tipo: 'Estudo de redesign' },
+    { altura: 144 },
+  ],
 ];
 const REPETICOES = 3;
 /** Quanto cada linha anda (px) do início ao fim da passagem da seção pela tela. */
