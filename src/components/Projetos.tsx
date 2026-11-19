@@ -1,4 +1,5 @@
 import { useCallback, useRef, type CSSProperties } from 'react';
+import booking from '../assets/projeto-booking.webp';
 import cursiva from '../assets/projeto-cursiva.png';
 import { WHATSAPP_URL } from '../config';
 import { useReducedMotion, useScrollProgress } from '../lib/hooks';
@@ -13,7 +14,7 @@ type Projeto = { altura: number; imagem?: string; nome?: string; tipo?: string }
  */
 const LINHAS: Projeto[][] = [
   [{ altura: 187 }, { altura: 217, imagem: cursiva, nome: 'Cursiva', tipo: 'Landing page' }, { altura: 187 }],
-  [{ altura: 144 }, { altura: 179 }, { altura: 144 }],
+  [{ altura: 144 }, { altura: 179, imagem: booking, nome: 'Booking', tipo: 'Estudo de redesign' }, { altura: 144 }],
 ];
 const REPETICOES = 3;
 /** Quanto cada linha anda (px) do início ao fim da passagem da seção pela tela. */
@@ -30,7 +31,7 @@ function Card({ altura, imagem, nome, tipo }: Projeto) {
           {/* No hover a página "rola" dentro do card, como um preview do site */}
           <img
             src={imagem}
-            alt={`Landing page ${nome}`}
+            alt={`${nome}: ${tipo}`}
             loading="lazy"
             className="h-full w-full object-cover object-top transition-[object-position] duration-[6000ms] ease-in-out group-hover/card:object-bottom"
           />
