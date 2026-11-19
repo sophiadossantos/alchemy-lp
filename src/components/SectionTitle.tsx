@@ -10,7 +10,7 @@ export function SectionTitle({ titulo, subtitulo, alinhamento = 'centro', espaco
   const centro = alinhamento === 'centro';
   return (
     <div className={`flex flex-col ${espaco} ${centro ? 'items-center text-center' : 'items-start'}`}>
-      <h2 className="text-[28px] font-semibold leading-[1.1] tracking-[-0.02em] md:text-h5">
+      <h2 className="text-2xl font-semibold leading-tight tracking-[-0.02em] md:text-4xl md:leading-[1.1]">
         {titulo}
       </h2>
       <p>{subtitulo}</p>

@@ -29,12 +29,8 @@ export default {
       fontFamily: {
         sans: ['Manrope', 'system-ui', 'sans-serif'],
       },
-      fontSize: {
-        // heading/h1, h3, h5 do Figma
-        h1: ['64px', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
-        h3: ['48px', { lineHeight: '1.1' }],
-        h5: ['32px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-      },
+      // Tipografia: escala padrão do Tailwind (12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72).
+      // Celular → desktop: display 36→60, h1 30→48, h2 24→36, h3 16→18, corpo 16, legenda 14/12.
       maxWidth: {
         page: '1280px',
       },

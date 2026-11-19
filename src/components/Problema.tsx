@@ -22,7 +22,7 @@ export function Problema() {
             />
             <h2
               id="problema-titulo"
-              className="text-[28px] font-semibold leading-[1.1] tracking-[-0.02em] [text-wrap:balance] md:text-h5"
+              className="text-2xl font-semibold leading-tight tracking-[-0.02em] [text-wrap:balance] md:text-4xl md:leading-[1.1]"
             >
               Todo bom negócio tem ouro escondido.
             </h2>

@@ -64,7 +64,7 @@ export function Hero() {
             <h1
               id="hero-titulo"
               style={entra(100).style}
-              className={`max-w-[720px] text-[40px] font-semibold leading-[1.08] tracking-[-0.02em] text-neutro-900 md:text-[56px] lg:text-h1 ${entra(100).className}`}
+              className={`max-w-[720px] text-4xl font-semibold leading-[1.1] tracking-[-0.03em] text-neutro-900 md:text-5xl md:leading-[1.1] lg:text-6xl lg:leading-[1.08] ${entra(100).className}`}
             >
               Seu negócio merece uma página{' '}
               <span className="bg-gradient-to-r from-vinho-800 to-vinho-500 bg-clip-text text-transparent">à altura.</span>

@@ -23,7 +23,7 @@ export function CtaFinal() {
           <div className="flex flex-col items-center gap-4 rounded-[18px] border border-white/10 px-6 pb-14 pt-24 text-center md:px-10 md:pb-20 md:pt-28">
             <h2
               id="cta-titulo"
-              className="max-w-[760px] text-[34px] font-semibold leading-[1.1] text-neutro-50 [text-wrap:balance] md:text-h3"
+              className="max-w-[760px] text-3xl font-semibold leading-tight tracking-[-0.02em] text-neutro-50 [text-wrap:balance] md:text-5xl md:leading-[1.1]"
             >
               Pronto para transformar a sua presença?
             </h2>

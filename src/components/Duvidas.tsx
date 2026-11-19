@@ -50,7 +50,7 @@ function ItemDeFaq({ pergunta, resposta, aberto, onToggle }: {
           aria-expanded={aberto}
           aria-controls={id}
           onClick={onToggle}
-          className="group flex w-full items-center justify-between gap-4 py-6 text-left text-lg font-semibold transition-colors duration-300 hover:text-vinho-800"
+          className="group flex w-full items-center justify-between gap-4 py-5 text-left text-base font-semibold md:py-6 md:text-lg transition-colors duration-300 hover:text-vinho-800"
         >
           {pergunta}
           <img

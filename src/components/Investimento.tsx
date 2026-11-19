@@ -46,13 +46,13 @@ export function Investimento() {
           <div className="flex flex-col">
             <h2
               id="investimento-titulo"
-              className="text-[28px] font-semibold leading-[1.1] tracking-[-0.02em] md:text-h5"
+              className="text-2xl font-semibold leading-tight tracking-[-0.02em] md:text-4xl md:leading-[1.1]"
             >
               Investimento
             </h2>
             <p className="mt-2 text-neutro-300">Um valor fechado, sem surpresas no meio do caminho.</p>
 
-            <h3 className="mt-10 text-lg font-semibold">Incluso</h3>
+            <h3 className="mt-8 text-base font-semibold md:mt-10 md:text-lg">Incluso</h3>
             <ul className="mt-2">
               {inclusos.map((item) => (
                 <li key={item} className="flex items-center gap-3 border-b border-white/10 py-3.5 last:border-b-0">
@@ -91,8 +91,8 @@ export function Investimento() {
               </p>
               <p className="mt-1 flex items-start gap-1.5 text-vinho-800">
                 <span className="sr-only">Por </span>
-                <span className="mt-3 text-2xl font-semibold">R$</span>
-                <span className="text-[72px] font-semibold leading-none tracking-[-0.04em]">600</span>
+                <span className="mt-2 text-xl font-semibold md:mt-3 md:text-2xl">R$</span>
+                <span className="text-5xl font-semibold leading-none tracking-[-0.04em] md:text-7xl">600</span>
               </p>
               <p className="mt-3 text-neutro-600">Só para os 3 primeiros projetos.</p>
             </div>
