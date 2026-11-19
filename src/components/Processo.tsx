@@ -1,11 +1,13 @@
 import { CardLuz } from './CardLuz';
 import { SectionTitle } from './SectionTitle';
 
+/** A etapa de proposta mostra que o "a partir de" leva a um valor combinado, não a uma surpresa. */
 const etapas = [
-  { titulo: 'Entendimento', texto: 'Análise do negócio, do público e do conteúdo do site.' },
-  { titulo: 'Design', texto: 'Criação do visual e ajustes até a sua aprovação final.' },
-  { titulo: 'Desenvolvimento', texto: 'Construção do site, responsivo e testado em toda tela.' },
-  { titulo: 'Publicação', texto: 'Site no ar, revisado e pronto para receber os contatos.' },
+  { titulo: 'Contato', texto: 'Você chama no WhatsApp e conta o que precisa.' },
+  { titulo: 'Briefing', texto: 'Entendemos o seu negócio, o seu público e os seus objetivos.' },
+  { titulo: 'Proposta', texto: 'Você recebe escopo, valor e prazo antes de começar.' },
+  { titulo: 'Criação', texto: 'Design e desenvolvimento da sua página.' },
+  { titulo: 'Ajustes e entrega', texto: 'Rodadas de ajustes e a página publicada.' },
 ];
 
 export function Processo() {
@@ -18,7 +20,7 @@ export function Processo() {
             subtitulo="Do briefing à página no ar, com o mesmo contato do início ao fim."
           />
         </div>
-        <ol className="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {etapas.map((etapa, i) => (
             <CardLuz
               key={etapa.titulo}

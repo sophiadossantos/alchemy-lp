@@ -3,153 +3,32 @@ import { whatsappCom } from '../config';
 import { Button } from './Button';
 import { Estrela } from './Estrela';
 
-type Plano = {
-  nome: string;
-  paraQuem: string;
-  /** O que a pessoa recebe, em linguagem de cliente. */
-  itens: string[];
-  /** Prazo e ajustes, numa linha discreta. */
-  prazo: string;
-  /** Preço cheio do documento de planos. */
-  preco: string;
-  /** Valor de lançamento (3 primeiros projetos), quando existe. */
-  lancamento?: string;
-  destaque?: boolean;
-};
-
-/** Planos do documento de planos e propostas (seções 1.1 e 1.2), escritos sem termos técnicos. */
-const planos: Plano[] = [
-  {
-    nome: 'Portfólio Express',
-    paraQuem: 'Para fotógrafos e criativos',
-    itens: [
-      'Página com galeria e contato',
-      'Até 30 fotos e 1 vídeo',
-      'Sua logo, cores e fontes',
-      'Orçamentos no seu e-mail',
-      'Botões de WhatsApp e Instagram',
-      'Você mesmo troca as fotos',
-    ],
-    prazo: 'Pronta em 7 dias úteis · 1 rodada de ajustes',
-    preco: '850',
-    lancamento: '600',
-  },
-  {
-    nome: 'Essencial',
-    paraQuem: 'Para quem já tem quem monte o site',
-    itens: [
-      'O visual completo da página',
-      'Até 8 seções que vendem',
-      'Sua logo, cores e fontes',
-      'Celular e computador',
-      'Pronto para quem vai montar',
-    ],
-    prazo: 'Pronta em 10 dias úteis · 2 rodadas de ajustes',
-    preco: '1.100',
-    lancamento: '800',
-  },
-  {
-    nome: 'Completo',
-    paraQuem: 'Para negócios que querem vender mais',
-    itens: [
-      'Página no ar, no seu endereço',
-      'Pedidos no e-mail e WhatsApp',
-      'Rápida e perfeita no celular',
-      'Pronta para anúncios',
-      'Guia para editar os textos',
-    ],
-    prazo: 'Pronta em 15 a 20 dias úteis · 2 rodadas de ajustes',
-    preco: '2.500',
-    lancamento: '1.500',
-    destaque: true,
-  },
-  {
-    nome: 'Completo+',
-    paraQuem: 'Para quem quer até os textos prontos',
-    itens: [
-      'Tudo do Completo',
-      'Textos escritos para vender',
-      'Responde às dúvidas comuns',
-      'Contato que filtra curiosos',
-      'Conversa para aprovar textos',
-    ],
-    prazo: 'Pronta em 20 a 25 dias úteis · 3 rodadas de ajustes',
-    preco: '3.200',
-  },
+/** Pacote base: a landing page desenhada e publicada (plano Completo do documento de planos). */
+const inclusos = [
+  'Design exclusivo, criado do zero (sem template)',
+  'Até 8 seções',
+  'Versão responsiva: celular, tablet e computador',
+  'Desenvolvimento e publicação',
+  'Formulário de contato com aviso por e-mail e WhatsApp',
+  '2 rodadas de ajustes',
+  'Entrega em 15 a 20 dias úteis após o briefing',
 ];
 
-function CardPlano({ nome, paraQuem, itens, prazo, preco, lancamento, destaque }: Plano) {
-  const claro = destaque;
-  const suave = claro ? 'text-neutro-500' : 'text-neutro-300';
-  const estrela = claro ? 'text-vinho-800' : 'text-vinho-200';
-  return (
-    // data-reveal fica no li; o efeito de subir fica no card de dentro, para as transições não brigarem
-    <li data-reveal className="flex">
-      <div
-        className={`luz relative flex w-full flex-col rounded-3xl p-6 transition-[transform,box-shadow,border-color,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 md:p-7 ${
-          claro
-            ? 'bg-white text-neutro-900 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.65)] hover:shadow-[0_56px_110px_-30px_rgba(0,0,0,0.8)]'
-            : 'border border-white/10 bg-white/[0.04] text-neutro-50 hover:border-white/20 hover:bg-white/[0.06] hover:shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)]'
-        }`}
-        style={
-          {
-            '--cor-luz': claro ? 'rgba(122, 31, 46, 0.03)' : 'rgba(241, 201, 202, 0.05)',
-            '--raio-luz': '240px',
-          } as CSSProperties
-        }
-      >
-        <div className="flex items-center justify-between gap-3">
-          <h3 className="text-lg font-semibold">{nome}</h3>
-          {claro && (
-            <span className="rounded-full bg-vinho-800 px-3 py-1 text-xs font-medium text-neutro-50">Recomendado</span>
-          )}
-        </div>
-        <p className={`mt-1 text-sm ${suave}`}>{paraQuem}</p>
+const adicionais = [
+  'Integração com pixel e analytics',
+  'Integração com CRM',
+  'Seções ou páginas extras',
+  'Textos escritos do zero',
+  'Rodada extra de ajustes',
+  'Manutenção mensal',
+];
 
-        <div className={`mt-6 border-t pt-6 ${claro ? 'border-neutro-900/[0.08]' : 'border-white/10'}`}>
-          <p className={`text-sm ${suave}`}>
-            A partir de
-            {lancamento && (
-              <>
-                <span className="sr-only">, de</span> <s className="ml-1">R$ {preco}</s>
-              </>
-            )}
-          </p>
-          <p className={`mt-1 flex items-start gap-1 ${claro ? 'text-vinho-800' : 'text-neutro-50'}`}>
-            <span className="sr-only">por </span>
-            <span className="mt-1.5 text-base font-semibold">R$</span>
-            <span className="text-4xl font-semibold leading-none tracking-[-0.03em]">{lancamento ?? preco}</span>
-          </p>
-        </div>
-
-        <ul className={`mt-6 flex flex-1 flex-col gap-3 text-sm ${claro ? 'text-neutro-700' : 'text-neutro-100'}`}>
-          {itens.map((item) => (
-            <li key={item} className="flex items-start gap-2.5">
-              <Estrela tamanho={12} className={`mt-1 shrink-0 ${estrela}`} />
-              {item}
-            </li>
-          ))}
-        </ul>
-
-        <p className={`mt-6 border-t pt-4 text-xs ${claro ? 'border-neutro-900/[0.08] text-neutro-500' : 'border-white/10 text-neutro-300'}`}>
-          {prazo}
-        </p>
-
-        <Button
-          variante={claro ? 'vinho' : 'contorno-claro'}
-          href={whatsappCom(`Olá! Vim pelo site da Alchemy e quero saber mais sobre o plano ${nome}.`)}
-          className="mt-5 w-full"
-        >
-          Saiba mais
-        </Button>
-      </div>
-    </li>
-  );
-}
+/** Todos os caminhos da seção levam ao mesmo lugar: o WhatsApp, já pedindo a proposta. */
+const PROPOSTA_URL = whatsappCom('Olá! Vim pelo site da Alchemy e quero solicitar uma proposta para a minha landing page.');
 
 /**
- * Investimento: painel preto frio com os quatro planos lado a lado, cada um com "a partir de"
- * e um "Saiba mais" que abre o WhatsApp já com o nome do plano. O detalhe fica para a conversa.
+ * Investimento: um pacote base com "a partir de", o selo de lançamento, adicionais sem preço
+ * e as condições de pagamento. O valor final sai na proposta, depois do briefing.
  */
 export function Investimento() {
   return (
@@ -170,32 +49,82 @@ export function Investimento() {
           />
         </div>
 
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-[560px]">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,460px)] lg:gap-20">
+          {/* Título, lançamento, adicionais e pagamento */}
+          <div className="flex flex-col">
             <h2
               id="investimento-titulo"
               className="text-2xl font-semibold leading-tight tracking-[-0.02em] md:text-4xl md:leading-[1.1]"
             >
               Investimento
             </h2>
-            <p className="mt-2 text-neutro-300">Valores fechados, sem surpresa. Escolha o ponto de partida do seu projeto.</p>
+            <p className="mt-3 max-w-[520px] text-neutro-300">
+              Cada projeto é pensado para o seu negócio. O valor final depende do escopo, e você recebe uma proposta
+              personalizada após o briefing.
+            </p>
+
+            <p className="mt-8 flex items-start gap-3 rounded-2xl border border-vinho-200/20 bg-vinho-200/[0.06] px-4 py-3.5 text-sm text-neutro-100">
+              <Estrela tamanho={14} className="mt-0.5 shrink-0 text-vinho-200" />
+              <span>
+                <strong className="font-semibold text-neutro-50">Condição de lançamento:</strong> valores especiais para os
+                primeiros 3 projetos.
+              </span>
+            </p>
+
+            <h3 className="mt-10 text-base font-semibold md:text-lg">Adicionais sob consulta</h3>
+            <ul className="mt-3 grid gap-x-6 sm:grid-cols-2">
+              {adicionais.map((item) => (
+                <li key={item} className="flex items-center gap-3 border-b border-white/10 py-3 text-neutro-200">
+                  <span aria-hidden className="h-1 w-1 shrink-0 rounded-full bg-vinho-200" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <h3 className="mt-10 text-base font-semibold md:text-lg">Pagamento</h3>
+            <p className="mt-2 text-neutro-300">50% no início do projeto e 50% na entrega, via Pix.</p>
           </div>
-          <p className="inline-flex items-center gap-2 self-start rounded-full border border-white/10 px-3 py-1.5 text-xs text-neutro-200 md:self-auto">
-            <Estrela tamanho={10} className="text-vinho-200" />
-            Valor de lançamento para os 3 primeiros projetos
-          </p>
+
+          {/* Card do pacote base */}
+          <div className="flex lg:items-start">
+            <div
+              className="luz relative flex w-full flex-col rounded-[28px] bg-white p-7 text-neutro-900 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.65)] transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:shadow-[0_56px_110px_-30px_rgba(0,0,0,0.8)] sm:p-9"
+              style={{ '--cor-luz': 'rgba(122, 31, 46, 0.03)', '--raio-luz': '280px' } as CSSProperties}
+            >
+              <h3 className="text-lg font-semibold">Landing Page</h3>
+
+              <div className="mt-6 border-t border-neutro-900/[0.08] pt-6">
+                <p className="text-sm text-neutro-500">
+                  a partir de
+                  <span className="sr-only">, de</span> <s className="ml-1">R$ 2.500</s>
+                </p>
+                <p className="mt-1 flex items-start gap-1.5 text-vinho-800">
+                  <span className="sr-only">por </span>
+                  <span className="mt-2 text-xl font-semibold md:mt-3 md:text-2xl">R$</span>
+                  <span className="text-5xl font-semibold leading-none tracking-[-0.04em] md:text-6xl">1.500</span>
+                </p>
+              </div>
+
+              <p className="mt-7 text-sm font-semibold">O que está incluso</p>
+              <ul className="mt-3 flex flex-col gap-3 text-sm text-neutro-700">
+                {inclusos.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <Estrela tamanho={12} className="mt-1 shrink-0 text-vinho-800" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <p className="mt-6 border-t border-neutro-900/[0.08] pt-4 text-xs text-neutro-500">
+                Domínio e hospedagem ficam por conta do cliente.
+              </p>
+
+              <Button href={PROPOSTA_URL} className="mt-5 w-full">
+                Solicitar proposta
+              </Button>
+            </div>
+          </div>
         </div>
-
-        <ul className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {planos.map((p) => (
-            <CardPlano key={p.nome} {...p} />
-          ))}
-        </ul>
-
-        <p className="mt-8 text-sm text-neutro-300">
-          Pagamento: 50% para começar e 50% na entrega, via Pix. Adicionais: domínio próprio, formulário qualificado e
-          manutenção mensal.
-        </p>
       </div>
     </section>
   );

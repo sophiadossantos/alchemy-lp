@@ -3,31 +3,36 @@ import iconeMais from '../assets/icone-mais.svg';
 import iconeMenos from '../assets/icone-menos.svg';
 import { SectionTitle } from './SectionTitle';
 
-/** Respostas conferidas com o documento de planos e propostas. */
+/** Respostas alinhadas com o pacote base da seção Investimento. */
 const perguntas = [
+  {
+    pergunta: 'Por que "a partir de"?',
+    resposta:
+      'Porque cada projeto tem um escopo. O valor base cobre uma landing page completa, e o que vier a mais é combinado na proposta, antes de começar.',
+  },
   {
     pergunta: 'Quanto tempo leva?',
     resposta:
-      'Depende do plano: 7 dias úteis no Portfólio Express, 10 no Essencial, de 15 a 20 no Completo e de 20 a 25 no Completo+. O prazo começa quando todos os materiais chegam e a entrada é paga.',
+      'De 15 a 20 dias úteis após o briefing. O prazo começa a contar quando todos os materiais chegam e a entrada é paga.',
+  },
+  {
+    pergunta: 'Domínio e hospedagem estão inclusos?',
+    resposta:
+      'Não. O domínio e a hospedagem ficam no seu nome e por sua conta, para a página ser sempre sua. A hospedagem no Framer custa a partir de cerca de US$ 10 por mês, e a publicação fica com a gente.',
   },
   {
     pergunta: 'Como funciona a rodada de ajustes?',
     resposta:
-      'Você envia todos os ajustes de uma vez, depois de ver o design, e eles são aplicados antes da publicação. São 1 rodada no Portfólio Express, 2 no Essencial e no Completo e 3 no Completo+. Rodadas extras custam R$ 180 cada.',
+      'Você envia todos os ajustes de uma vez, depois de ver o design, e eles são aplicados antes da publicação. São 2 rodadas inclusas.',
   },
   {
-    pergunta: 'Preciso ter domínio e hospedagem?',
+    pergunta: 'E se eu precisar de mais ajustes depois?',
     resposta:
-      'Não precisa ter antes. A página fica no Framer, numa conta no seu nome, com assinatura a partir de cerca de US$ 10 por mês. A configuração do domínio já vem no Completo e é um adicional de R$ 150 no Portfólio Express.',
-  },
-  {
-    pergunta: 'E se eu quiser mudar algo depois?',
-    resposta:
-      'No Framer dá para trocar fotos e textos simples por conta própria. Novas seções ou mudanças de layout são orçadas à parte, e também existe a manutenção mensal de até 2 horas por R$ 250.',
+      'Rodadas extras e mudanças depois da entrega são cobradas à parte, sob consulta. Também dá para contratar a manutenção mensal.',
   },
   {
     pergunta: 'Como funciona o pagamento?',
-    resposta: '50% para começar e 50% na entrega, antes da publicação, via Pix.',
+    resposta: '50% no início do projeto e 50% na entrega, antes da publicação, via Pix.',
   },
   {
     pergunta: 'Por que o valor de lançamento?',
